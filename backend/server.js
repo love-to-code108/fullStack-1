@@ -4,7 +4,9 @@ import "dotenv/config"
 const app = express();
 const port = process.env.PORT;
 
+// RESPONDING TO GET REQUEST
 const jokes = [
+
     {
       "joke": "Who invented fractions? Henry the 1/8"
     },
@@ -37,13 +39,26 @@ const jokes = [
     }
   ];
 
-// RESPONDING TO GET REQUEST
-app.get("/",(req,res) => {
-    res.send(jokes);
+
+
+// const joke = {
+//     "joke": "Who invented fractions? Henry the 1/8"
+// }
+
+
+
+app.get("/api", (req,res) => {
+    res.send(jokes)
+})
+
+
+
+app.get("/", (req, res) => {
+    res.send("<h1>Hello World</h1>");
 })
 
 
 // LISTENING 
-app.listen(port , (req , res) =>{
-    console.log("Server started on port",process.env.PORT);
-} )
+app.listen(port, (req, res) => {
+    console.log("Server started on port", process.env.PORT);
+})
